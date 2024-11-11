@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import InputField from '../components/InputField';
 import SubmitButton from '../components/SubmitButton';
 
@@ -9,7 +7,7 @@ const RegisterPage = () => {
 
     return (
         <div>
-            <h1>S'incrire</h1>
+            <h1>S&apos;incrire</h1>
             <form>
                 <InputField
                     label="Nom"
