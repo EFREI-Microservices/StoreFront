@@ -1,11 +1,9 @@
 # StoreFront
 
-
 Documentation de StoreFront
 
-
 ## Prérequis
-- Node [\<link\>](https://nodejs.org/en/download/)
+- Node 20+ [\<link\>](https://nodejs.org/en/download/)
 
 ## Installation
 
@@ -13,14 +11,15 @@ Documentation de StoreFront
 ```bash
 git clone https://github.com/EFREI-Microservices/StoreFront.git
 ```
+
 2. Installer les dépendances
 ```bash
 npm install
 ```
 
-3. Lancer le front
+3. Lancer l'application
 ```bash
-npm run dev
+npm run start
 ```
 
-
+L'application sera disponible sur [localhost:8001](http://localhost:8001)
