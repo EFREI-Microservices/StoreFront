@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import InputField from '../components/InputField';
 import SubmitButton from '../components/SubmitButton';
 
@@ -22,9 +20,9 @@ const LoginPage = () => {
                 <SubmitButton label="Login" />
             </form>
             <p>
-                Vous n'avez pas de compte?{' '}
+                Vous n&apos;avez pas de compte?{' '}
                 <Link to="/register">
-                    S'inscrire ici
+                    S&apos;inscrire ici
                 </Link>
             </p>
         </div>
