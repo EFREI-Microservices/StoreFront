@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import ListProductsPage from './pages/ListProductsPage';
 import ProductPage from "./pages/ProductPage.jsx";
 import BasketPage from './pages/BasketPage.jsx';
+import ProtectedRoute from "./Route/ProtectedRoute.jsx";
 import './App.css'
 
 function App() {
@@ -31,11 +32,11 @@ function App() {
 
                 <Route path="/login" element={<LoginPage />} />
 
-                <Route path="/listproduct" element={<ListProductsPage />} />
+                <Route path="/listproduct" element={<ProtectedRoute><ListProductsPage /></ProtectedRoute>} />
 
-                <Route path="/product" element={<ProductPage />} />
+                <Route path="/product/:id" element={<ProtectedRoute><ProductPage /></ProtectedRoute>} />
 
-                <Route path="/basket" element={<BasketPage />} />
+                <Route path="/basket" element={<ProtectedRoute><BasketPage /></ProtectedRoute>} />
 
 
             </Routes>
