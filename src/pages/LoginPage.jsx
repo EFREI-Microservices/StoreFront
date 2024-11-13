@@ -27,7 +27,6 @@ const LoginPage = () => {
 
             localStorage.setItem('token', token);
 
-            console.log('Login success:', response.data);
 
             navigate('/listproduct');
         } catch (error) {
@@ -40,7 +39,6 @@ const LoginPage = () => {
             } else {
                 setError('Login failed. Please try again.');
             }
-            console.error('Login error:', error);
         }
     };
 

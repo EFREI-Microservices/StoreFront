@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage';
 import ListProductsPage from './pages/ListProductsPage';
 import ProductPage from "./pages/ProductPage.jsx";
 import BasketPage from './pages/BasketPage.jsx';
-import ProtectedRoute from "./Route/ProtectedRoute.jsx";
+import RouteGuard from "./Route/RouteGuard.jsx";
 import './App.css'
 
 function App() {
@@ -28,15 +28,14 @@ function App() {
                     }
                 />
 
-                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<RouteGuard><LoginPage /></RouteGuard>} />
+                <Route path="/register" element={<RouteGuard><RegisterPage /></RouteGuard>} />
 
-                <Route path="/login" element={<LoginPage />} />
+                <Route path="/listproduct" element={<RouteGuard protectedRoute><ListProductsPage /></RouteGuard>} />
 
-                <Route path="/listproduct" element={<ProtectedRoute><ListProductsPage /></ProtectedRoute>} />
+                <Route path="/product/:id" element={<RouteGuard protectedRoute><ProductPage /></RouteGuard>} />
 
-                <Route path="/product/:id" element={<ProtectedRoute><ProductPage /></ProtectedRoute>} />
-
-                <Route path="/basket" element={<ProtectedRoute><BasketPage /></ProtectedRoute>} />
+                <Route path="/basket" element={<RouteGuard protectedRoute><BasketPage /></RouteGuard>} />
 
 
             </Routes>

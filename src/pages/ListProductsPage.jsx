@@ -22,7 +22,6 @@ const ListProductsPage = () => {
                 );
                 setProducts(response.data);
             } catch (error) {
-                console.error('Error fetching products:', error.response || error);
                 setError(
                     `Failed to load products: ${
                         error.response?.data?.message || error.message
@@ -37,6 +36,14 @@ const ListProductsPage = () => {
         <div>
             <Header/>
             <div className="container mt-5">
+
+                {/* Affichage d'un message d'erreur si présent */}
+                {error && (
+                    <div className="alert alert-danger mt-4">
+                        {error}
+                    </div>
+                )}
+
                 {/* Barre de recherche */}
                 <div className="mb-4 d-flex gap-3 align-items-center">
                     <input
@@ -48,6 +55,7 @@ const ListProductsPage = () => {
                         Rechercher
                     </button>
                 </div>
+
 
                 <div className="row">
                     {/* Filtres*/}
@@ -92,13 +100,6 @@ const ListProductsPage = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* Affichage d'un message d'erreur si présent */}
-                {error && (
-                    <div className="alert alert-danger mt-4">
-                        {error}
-                    </div>
-                )}
             </div>
         </div>
     );

@@ -25,10 +25,6 @@ const ProductPage = () => {
 
                 setProduct(response.data);
             } catch (error) {
-                console.error(
-                    'Erreur lors de la récupération du Produit :',
-                    error.response || error
-                );
                 setError(
                     `Impossible de charger le Produit : ${
                         error.response?.data?.message || error.message

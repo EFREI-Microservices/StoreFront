@@ -38,9 +38,13 @@ const RegisterPage = () => {
                     password,
                 }
             );
-            console.log('Register success:', response.data);
 
-            navigate('/login');
+            if (response.status === 201) {
+                navigate('/login');
+            } else {
+                setError("Please try again.");
+            }
+
         } catch (error) {
             if (
                 error.response &&
