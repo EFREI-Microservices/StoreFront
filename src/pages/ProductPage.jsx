@@ -1,39 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import Header from '../components/Header.jsx';
+import {fetchProducts} from "../service/ProductService.js";
+import FullProductCard from "../components/Products/FullProductCard.jsx";
 
 const ProductPage = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [error, setError] = useState('');
-
-    const token = localStorage.getItem('token');
-
     useEffect(() => {
-        const fetchProducts = async () => {
-            if (!token) {
-                setError('No token found, please log in.');
-                return;
-            }
-
+        const loadProducts = async () => {
             try {
-                const response = await axios.get(
-                    `${import.meta.env.VITE_API_URL_PRODUCT}/products/${id}`,
-                    {headers: { Authorization: `Bearer ${token}`}}
-                );
-
-                setProduct(response.data);
+                const productData = await fetchProducts(id);
+                setProduct(productData);
             } catch (error) {
-                setError(
-                    `Impossible de charger le Produit : ${
-                        error.response?.data?.message || error.message
-                    }`
-                );
+                setError(error.message);
             }
         };
-        fetchProducts();
-    }, [id, token]);
+
+        loadProducts();
+    }, [id]);
 
     if (error) {
         return (
@@ -63,36 +49,7 @@ const ProductPage = () => {
             <Header/>
             <div className="container mt-5">
                 <div className="row justify-content-center">
-                    {/* Carte pour afficher le produit */}
-                    <div className="col-md-8">
-                        <div className="card shadow-sm rounded-3 p-4">
-                            <div className="row">
-                                {/* Photo du produit */}
-                                <div className="col-md-6 mb-4">
-                                    <img
-                                        src="https://via.placeholder.com/400?text=Produit+1"
-                                        alt="Produit 1"
-                                        className="img-fluid rounded shadow"
-                                    />
-                                </div>
-
-                                {/* Informations sur le produit */}
-                                <div className="col-md-6">
-                                    <h2 className="fw-bold mb-3">{product.name}</h2>
-                                    <p className="text-muted fs-4 mb-3">{product.price}€</p>
-                                    <p className="text-muted mb-4">
-                                        {product.description}
-                                    </p>
-
-                                    {/* Bouton Ajouter au panier */}
-                                    <button className="btn btn-primary mb-3">
-                                        Ajouter au panier
-                                    </button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <FullProductCard product={product} />
                 </div>
             </div>
         </div>

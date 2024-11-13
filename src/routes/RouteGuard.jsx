@@ -5,11 +5,9 @@ const RouteGuard = ({ children, protectedRoute }) => {
   const token = localStorage.getItem('token');
 
   if (protectedRoute) {
-    // on redirige vers /login si l'utilisateur n'a pas de token
-    return token ? children : <Navigate to="/login" />;
+    return !token ? <Navigate to="/login" /> : children;
   } else {
-    // on redirige vers / si l'utilisateur a déjà un token
-    return token ? <Navigate to="/listproduct" /> : children;
+    return token ? <Navigate to="/" /> : children;
   }
 };
 
