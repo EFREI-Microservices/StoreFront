@@ -10,15 +10,7 @@ export const handleLogin = async (event, username, password, setError, navigate)
 
         navigate('/');
     } catch (error) {
-        if (
-            error.response &&
-            error.response.data &&
-            error.response.data.message
-        ) {
-            setError(error.response.data.message);
-        } else {
-            setError('Login failed. Please try again.');
-        }
+        setError(error.response?.data?.message || 'Login failed. Please try again.');
     }
 };
 
@@ -43,9 +35,7 @@ export const handleRegistration = async (event, username, password, setError, na
             setError('Please try again.');
         }
     } catch (error) {
-        setError(
-            error.response?.data?.message || 'An error occurred during registration'
-        );
+        setError(error.response?.data?.message || 'An error occurred during registration');
     }
 };
 
