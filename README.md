@@ -22,4 +22,4 @@ npm install
 npm run start
 ```
 
-L'application sera disponible sur [localhost:8001](http://localhost:8001)
+L'application sera disponible sur [localhost:8000](http://localhost:8000)
